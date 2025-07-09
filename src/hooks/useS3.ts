@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { s3Service } from '../services/s3Service';
 import { S3Credentials, S3Object, BucketInfo } from '../types';
 
@@ -7,14 +7,20 @@ export const useS3 = () => {
   const [bucketInfo, setBucketInfo] = useState<BucketInfo | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [isConnected, setIsConnected] = useState(false);
+  const [isConnected, setIsConnected] = useState(() => {
+    return sessionStorage.getItem('s3-connected') === 'true';
+  });
+  const [credentials, setCredentials] = useState<S3Credentials | null>(() => {
+    const saved = sessionStorage.getItem('s3-credentials');
+    return saved ? JSON.parse(saved) : null;
+  });
 
-  const connect = useCallback(async (credentials: S3Credentials) => {
+  const connect = useCallback(async (newCredentials: S3Credentials) => {
     setLoading(true);
     setError(null);
     
     try {
-      s3Service.configure(credentials);
+      s3Service.configure(newCredentials);
       await s3Service.testConnection();
       
       const [objectsList, info] = await Promise.all([
@@ -24,7 +30,11 @@ export const useS3 = () => {
       
       setObjects(objectsList);
       setBucketInfo(info);
+      setCredentials(newCredentials);
       setIsConnected(true);
+      
+      sessionStorage.setItem('s3-credentials', JSON.stringify(newCredentials));
+      sessionStorage.setItem('s3-connected', 'true');
     } catch (err) {
       let errorMessage = 'Failed to connect to S3';
       if (err instanceof Error) {
@@ -113,9 +123,19 @@ export const useS3 = () => {
   const disconnect = useCallback(() => {
     setObjects([]);
     setBucketInfo(null);
+    setCredentials(null);
     setIsConnected(false);
     setError(null);
+    sessionStorage.removeItem('s3-credentials');
+    sessionStorage.removeItem('s3-connected');
   }, []);
+
+  // Auto-reconnect on page load if credentials exist
+  React.useEffect(() => {
+    if (credentials && !isConnected) {
+      connect(credentials);
+    }
+  }, [credentials, isConnected, connect]);
 
   return {
     objects,

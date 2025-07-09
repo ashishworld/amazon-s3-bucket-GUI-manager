@@ -1,6 +1,13 @@
 {
-  "name": "s3-storage-manager",
+  "name": "amazon-s3-bucket-gui-manager",
   "version": "1.0.0",
+  "description": "Modern AWS S3 Bucket Manager with secure web interface",
+  "author": "Ashish Kumar <ashishworld.dev@gmail.com>",
+  "homepage": "https://amazon-s3-bucket-gui-manager.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ashishworld/amazon-s3-bucket-GUI-manager.git"
+  },
   "private": true,
   "dependencies": {
     "@aws-sdk/client-s3": "^3.490.0",

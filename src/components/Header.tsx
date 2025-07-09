@@ -14,18 +14,16 @@ const Header: React.FC<HeaderProps> = ({ isConnected, onDisconnect }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-4 sm:py-6 w-full">
           <div className="flex-1"></div>
-          <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
-            <img 
-              src="https://kwebmaker.com/_next/image/?url=%2Fimages%2Fkwebmaker_Logo_GIF.webp&w=256&q=75" 
-              alt="KWebMaker Logo" 
-              className="h-16 sm:h-20 md:h-24 w-auto"
-            />
-            <div className="flex items-center space-x-2 text-center sm:text-left">
-              <Database className="h-6 sm:h-8 w-6 sm:w-8 text-primary-600" />
-              <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
+          <div className="flex flex-col items-center text-center">
+            <div className="flex items-center space-x-3 mb-2">
+              <Database className="h-8 sm:h-10 w-8 sm:w-10 text-primary-600" />
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
                 S3 Storage Manager
               </h1>
             </div>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-md">
+              Manage your AWS S3 buckets with an intuitive GUI interface - upload, organize, and preview your media files effortlessly
+            </p>
           </div>
           <div className="flex-1 flex justify-end items-center space-x-3">
             <button

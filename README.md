@@ -1,7 +1,7 @@
 # 🗄️ S3 Storage Manager
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/s3-storage-amazonq)
-[![Live Demo](https://img.shields.io/badge/Live-Demo-blue)](https://your-app.vercel.app)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ashishworld/amazon-s3-bucket-GUI-manager)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue)](https://amazon-s3-bucket-gui-manager.vercel.app)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A modern, feature-rich React application for managing AWS S3 buckets with an intuitive interface. Built with TypeScript, Tailwind CSS, and following SOLID principles.
@@ -54,8 +54,8 @@ A modern, feature-rich React application for managing AWS S3 buckets with an int
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/s3-storage-amazonq.git
-   cd s3-storage-amazonq
+   git clone https://github.com/ashishworld/amazon-s3-bucket-GUI-manager.git
+   cd amazon-s3-bucket-GUI-manager
    ```
 
 2. **Install dependencies**
@@ -139,7 +139,7 @@ npm run eject      # Eject from Create React App
 ### Deploy to Vercel (Recommended)
 
 1. **One-click deploy**
-   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/s3-storage-amazonq)
+   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ashishworld/amazon-s3-bucket-GUI-manager)
 
 2. **Manual deployment**
    ```bash
@@ -197,10 +197,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you have any questions or need help:
 
-- 📧 Email: your-email@example.com
-- 🐛 Issues: [GitHub Issues](https://github.com/yourusername/s3-storage-amazonq/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/yourusername/s3-storage-amazonq/discussions)
+- 📧 Email: ashishworld.dev@gmail.com
+- 🐛 Issues: [GitHub Issues](https://github.com/ashishworld/amazon-s3-bucket-GUI-manager/issues)
+- 💬 Discussions: [GitHub Discussions](https://github.com/ashishworld/amazon-s3-bucket-GUI-manager/discussions)
 
 ---
 
-**Made with ❤️ by [Your Name](https://github.com/yourusername)**
+**Made with ❤️ by [Ashish Kumar](https://github.com/ashishworld)**

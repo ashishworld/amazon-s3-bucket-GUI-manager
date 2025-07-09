@@ -144,6 +144,16 @@ const CredentialsForm: React.FC<CredentialsFormProps> = ({ onConnect, loading, e
           {loading ? 'Connecting...' : 'Connect to Bucket'}
         </button>
       </form>
+      
+      <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
+        <div className="text-xs text-gray-500 dark:text-gray-400 text-center space-y-1">
+          <p>🔒 <strong>Your credentials are secure:</strong></p>
+          <p>• No data is stored on our servers</p>
+          <p>• Credentials remain in your browser session only</p>
+          <p>• All connections use HTTPS encryption</p>
+          <p>• Session expires when you close the browser</p>
+        </div>
+      </div>
     </div>
   );
 };
