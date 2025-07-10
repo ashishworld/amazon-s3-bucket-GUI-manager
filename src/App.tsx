@@ -4,6 +4,7 @@ import CredentialsForm from './components/CredentialsForm';
 import BucketInfo from './components/BucketInfo';
 import ObjectsList from './components/ObjectsList';
 import FileUpload from './components/FileUpload';
+import CorsNotice from './components/CorsNotice';
 import { useS3 } from './hooks/useS3';
 import { useTheme } from './hooks/useTheme';
 
@@ -37,6 +38,7 @@ const App: React.FC = () => {
       <Header isConnected={isConnected} onDisconnect={disconnect} />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <CorsNotice />
         {!isConnected ? (
           <div className="max-w-md mx-auto">
             <CredentialsForm

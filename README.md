@@ -201,6 +201,29 @@ If you have any questions or need help:
 - 🐛 Issues: [GitHub Issues](https://github.com/ashishworld/amazon-s3-bucket-GUI-manager/issues)
 - 💬 Discussions: [GitHub Discussions](https://github.com/ashishworld/amazon-s3-bucket-GUI-manager/discussions)
 
+## ⚠️ Important: S3 Bucket CORS Configuration
+
+**To access this application, please add the following CORS policy to your S3 bucket:**
+
+```json
+[
+  {
+    "AllowedHeaders": ["*"],
+    "AllowedMethods": ["GET", "PUT", "POST", "DELETE", "HEAD"],
+    "AllowedOrigins": ["*"],
+    "ExposeHeaders": ["ETag"],
+    "MaxAgeSeconds": 3000
+  }
+]
+```
+
+**How to add CORS policy:**
+1. Go to your S3 bucket in AWS Console
+2. Navigate to **Permissions** tab
+3. Scroll down to **Cross-origin resource sharing (CORS)**
+4. Click **Edit** and paste the above JSON
+5. Click **Save changes**
+
 ---
 
 **Made with ❤️ by [Ashish Kumar](https://github.com/ashishworld)**
