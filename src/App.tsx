@@ -39,12 +39,21 @@ const App: React.FC = () => {
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {!isConnected ? (
-          <div className="max-w-md mx-auto">
-            <CredentialsForm
-              onConnect={connect}
-              loading={loading}
-              error={error}
-            />
+          <div className="max-w-md mx-auto relative">
+            <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+              <img 
+                src="/bucket.png" 
+                alt="S3 Bucket" 
+                className="w-64 h-64 object-contain"
+              />
+            </div>
+            <div className="relative z-10">
+              <CredentialsForm
+                onConnect={connect}
+                loading={loading}
+                error={error}
+              />
+            </div>
           </div>
         ) : (
           <div className="space-y-6">
@@ -67,7 +76,9 @@ const App: React.FC = () => {
             />
           </div>
         )}
-        <CorsNotice />
+        <div className="mt-8">
+          <CorsNotice />
+        </div>
       </main>
     </div>
   );
