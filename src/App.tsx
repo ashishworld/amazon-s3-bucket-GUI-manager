@@ -38,7 +38,6 @@ const App: React.FC = () => {
       <Header isConnected={isConnected} onDisconnect={disconnect} />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <CorsNotice />
         {!isConnected ? (
           <div className="max-w-md mx-auto">
             <CredentialsForm
@@ -68,6 +67,7 @@ const App: React.FC = () => {
             />
           </div>
         )}
+        <CorsNotice />
       </main>
     </div>
   );
