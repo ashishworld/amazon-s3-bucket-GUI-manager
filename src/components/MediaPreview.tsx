@@ -23,7 +23,11 @@ const MediaPreview: React.FC<MediaPreviewProps> = ({
     const loadPreview = async () => {
       try {
         const url = await getDownloadUrl(fileKey);
-        setPreviewUrl(url);
+        if (url) {
+          setPreviewUrl(url);
+        } else {
+          console.error('No URL received for preview');
+        }
       } catch (error) {
         console.error('Failed to load preview:', error);
       } finally {
@@ -55,11 +59,22 @@ const MediaPreview: React.FC<MediaPreviewProps> = ({
 
   const renderPreview = () => {
     if (loading) {
-      return <div className="flex items-center justify-center h-64">Loading...</div>;
+      return (
+        <div className="flex items-center justify-center h-64">
+          <div className="text-gray-500 dark:text-gray-400">Loading preview...</div>
+        </div>
+      );
     }
 
     if (!previewUrl) {
-      return <div className="flex items-center justify-center h-64">Failed to load preview</div>;
+      return (
+        <div className="flex flex-col items-center justify-center h-64 space-y-2">
+          <div className="text-red-500">Failed to load preview</div>
+          <div className="text-sm text-gray-500 dark:text-gray-400">
+            Check your S3 bucket CORS configuration
+          </div>
+        </div>
+      );
     }
 
     switch (fileType) {
@@ -69,6 +84,11 @@ const MediaPreview: React.FC<MediaPreviewProps> = ({
             src={previewUrl} 
             alt={fileName}
             className="max-w-full max-h-96 object-contain mx-auto"
+            crossOrigin="anonymous"
+            onError={(e) => {
+              console.error('Image failed to load:', e);
+              e.currentTarget.style.display = 'none';
+            }}
           />
         );
       case 'video':
@@ -77,6 +97,8 @@ const MediaPreview: React.FC<MediaPreviewProps> = ({
             src={previewUrl} 
             controls 
             className="max-w-full max-h-96 mx-auto"
+            crossOrigin="anonymous"
+            onError={(e) => console.error('Video failed to load:', e)}
           >
             Your browser does not support video playback.
           </video>
@@ -87,6 +109,8 @@ const MediaPreview: React.FC<MediaPreviewProps> = ({
             src={previewUrl} 
             controls 
             className="w-full"
+            crossOrigin="anonymous"
+            onError={(e) => console.error('Audio failed to load:', e)}
           >
             Your browser does not support audio playback.
           </audio>

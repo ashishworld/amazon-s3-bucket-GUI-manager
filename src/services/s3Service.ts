@@ -54,12 +54,22 @@ class S3Service {
       throw new Error('S3 client not configured');
     }
 
-    const command = new GetObjectCommand({
-      Bucket: this.credentials.bucketName,
-      Key: key,
-    });
+    try {
+      const command = new GetObjectCommand({
+        Bucket: this.credentials.bucketName,
+        Key: key,
+      });
 
-    return await getSignedUrl(this.client, command, { expiresIn: 3600 });
+      const url = await getSignedUrl(this.client, command, { 
+        expiresIn: 3600,
+      });
+      
+      console.log('Generated pre-signed URL:', url);
+      return url;
+    } catch (error) {
+      console.error('Error generating pre-signed URL:', error);
+      throw error;
+    }
   }
 
   async testConnection(): Promise<boolean> {
