@@ -30,10 +30,10 @@ const CorsNotice: React.FC = () => {
           <AlertTriangle className="h-5 w-5 text-yellow-600 dark:text-yellow-400 mt-0.5 flex-shrink-0" />
           <div className="flex-1">
             <h3 className="text-sm font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
-              CORS Configuration Required
+              Setup Required: IAM Permissions & CORS Configuration
             </h3>
             <p className="text-sm text-yellow-700 dark:text-yellow-300 mb-3">
-              To use this application, please add the following CORS policy to your S3 bucket:
+              <strong>Step 1:</strong> Create IAM user with S3 permissions, then <strong>Step 2:</strong> Add CORS policy to your bucket:
             </p>
             <div className="bg-gray-800 dark:bg-gray-900 rounded-md p-3 relative">
               <pre className="text-xs text-green-400 overflow-x-auto">
@@ -47,9 +47,11 @@ const CorsNotice: React.FC = () => {
                 {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
               </button>
             </div>
-            <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-2">
-              AWS Console → S3 Bucket → Permissions → Cross-origin resource sharing (CORS) → Edit
-            </p>
+            <div className="text-xs text-yellow-600 dark:text-yellow-400 mt-2 space-y-1">
+              <p><strong>IAM Setup:</strong> AWS Console → IAM → Users → Create user → Attach policy</p>
+              <p><strong>CORS Setup:</strong> S3 Bucket → Permissions → CORS → Edit</p>
+              <p><strong>Full instructions:</strong> Check README.md on GitHub</p>
+            </div>
           </div>
         </div>
         <button

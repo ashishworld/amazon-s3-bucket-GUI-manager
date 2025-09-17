@@ -296,43 +296,48 @@ const ObjectsList: React.FC<ObjectsListProps> = ({
   );
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md">
-      <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700">
+      <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-t-xl">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center">
-            <File className="h-5 w-5 mr-2 text-primary-600" />
-            Objects ({objects.length}) - Page {currentPage} of {totalPages}
-          </h2>
+          <div>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white flex items-center mb-1">
+              <File className="h-6 w-6 mr-3 text-primary-600" />
+              File Manager
+            </h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              {objects.length} objects • Page {currentPage} of {totalPages}
+            </p>
+          </div>
           <div className="flex items-center space-x-2">
-            <div className="flex items-center bg-gray-100 dark:bg-gray-700 rounded-md p-1">
+            <div className="flex items-center bg-white dark:bg-gray-800 rounded-lg p-1 shadow-sm border border-gray-200 dark:border-gray-600">
               <button
                 onClick={() => setViewMode('list')}
-                className={`p-2 rounded ${viewMode === 'list' ? 'bg-white dark:bg-gray-600 shadow' : 'hover:bg-gray-200 dark:hover:bg-gray-600'}`}
+                className={`p-3 rounded-md transition-all ${viewMode === 'list' ? 'bg-primary-600 text-white shadow-md' : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400'}`}
                 title="List View"
               >
-                <List className="h-4 w-4 text-gray-700 dark:text-gray-300" />
+                <List className="h-4 w-4" />
               </button>
               <button
                 onClick={() => setViewMode('grid')}
-                className={`p-2 rounded ${viewMode === 'grid' ? 'bg-white dark:bg-gray-600 shadow' : 'hover:bg-gray-200 dark:hover:bg-gray-600'}`}
+                className={`p-3 rounded-md transition-all ${viewMode === 'grid' ? 'bg-primary-600 text-white shadow-md' : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400'}`}
                 title="Grid View"
               >
-                <Grid className="h-4 w-4 text-gray-700 dark:text-gray-300" />
+                <Grid className="h-4 w-4" />
               </button>
               <button
                 onClick={() => setViewMode('details')}
-                className={`p-2 rounded ${viewMode === 'details' ? 'bg-white dark:bg-gray-600 shadow' : 'hover:bg-gray-200 dark:hover:bg-gray-600'}`}
+                className={`p-3 rounded-md transition-all ${viewMode === 'details' ? 'bg-primary-600 text-white shadow-md' : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400'}`}
                 title="Details View"
               >
-                <MoreHorizontal className="h-4 w-4 text-gray-700 dark:text-gray-300" />
+                <MoreHorizontal className="h-4 w-4" />
               </button>
             </div>
             <button
               onClick={onRefresh}
               disabled={loading}
-              className="flex items-center px-3 py-2 text-sm bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-md transition-colors disabled:opacity-50"
+              className="flex items-center px-4 py-2 text-sm bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg border border-gray-200 dark:border-gray-600 shadow-sm hover:shadow-md transition-all disabled:opacity-50 font-medium"
             >
-              <RefreshCw className={`h-4 w-4 mr-1 ${loading ? 'animate-spin' : ''}`} />
+              <RefreshCw className={`h-4 w-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
               Refresh
             </button>
           </div>

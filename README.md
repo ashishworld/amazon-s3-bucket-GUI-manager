@@ -201,9 +201,52 @@ If you have any questions or need help:
 - 🐛 Issues: [GitHub Issues](https://github.com/ashishworld/amazon-s3-bucket-GUI-manager/issues)
 - 💬 Discussions: [GitHub Discussions](https://github.com/ashishworld/amazon-s3-bucket-GUI-manager/discussions)
 
+## 🔐 Required AWS S3 Permissions
+
+**Create an IAM user with the following policy for full S3 bucket access:**
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket",
+        "s3:GetBucketLocation",
+        "s3:GetBucketVersioning",
+        "s3:ListBucketVersions",
+        "s3:GetObject",
+        "s3:GetObjectVersion",
+        "s3:PutObject",
+        "s3:PutObjectAcl",
+        "s3:DeleteObject",
+        "s3:DeleteObjectVersion",
+        "s3:RestoreObject",
+        "s3:GetObjectAcl",
+        "s3:GetObjectVersionAcl",
+        "s3:PutObjectVersionAcl"
+      ],
+      "Resource": [
+        "arn:aws:s3:::YOUR-BUCKET-NAME",
+        "arn:aws:s3:::YOUR-BUCKET-NAME/*"
+      ]
+    }
+  ]
+}
+```
+
+**How to create IAM user:**
+1. Go to AWS IAM Console
+2. Click **Users** → **Create user**
+3. Enter username and select **Programmatic access**
+4. Click **Attach policies directly** → **Create policy**
+5. Paste the above JSON (replace YOUR-BUCKET-NAME)
+6. Complete user creation and **save Access Key & Secret Key**
+
 ## ⚠️ Important: S3 Bucket CORS Configuration
 
-**To access this application, please add the following CORS policy to your S3 bucket:**
+**Add this CORS policy to your S3 bucket:**
 
 ```json
 [
